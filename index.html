@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PakMarket - Pakistan's Marketplace</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7f5;
+            color: #222;
+        }
+
+        header {
+            background: #08783e;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        header p {
+            margin-bottom: 0;
+        }
+
+        .search-area {
+            padding: 20px;
+            text-align: center;
+            background: white;
+        }
+
+        .search-area input {
+            width: 70%;
+            max-width: 500px;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .search-area button,
+        .sell-button {
+            padding: 13px 18px;
+            border: none;
+            border-radius: 8px;
+            background: #08783e;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .category {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 12px 16px;
+            border-radius: 20px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .product {
+            background: white;
+            border-radius: 10px;
+            padding: 18px;
+            box-shadow: 0 2px 7px #00000010;
+        }
+
+        .product h3 {
+            margin-top: 0;
+        }
+
+        .price {
+            color: #08783e;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #e5eee8;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>PakMarket</h1>
+        <p>Pakistan's Marketplace — Buy & Sell Nationwide</p>
+    </header>
+
+    <section class="search-area">
+        <input type="text" id="searchBox"
+               placeholder="Search products...">
+        <button onclick="searchProducts()">Search</button>
+    </section>
+
+    <main>
+        <h2>Browse Categories</h2>
+
+        <div class="categories">
+            <div class="category">Mobile Accessories</div>
+            <div class="category">Electronics</div>
+            <div class="category">Clothing</div>
+            <div class="category">Home & Living</div>
+            <div class="category">Other Products</div>
+        </div>
+
+        <h2>Featured Products</h2>
+
+        <div class="products" id="productList">
+
+            <div class="product">
+                <h3>USB Cable</h3>
+                <p>Good quality charging cable.</p>
+                <p class="price">Rs. 200</p>
+                <p>Seller: PakMarket Demo</p>
+            </div>
+
+            <div class="product">
+                <h3>Mobile Charger</h3>
+                <p>Everyday mobile charging adapter.</p>
+                <p class="price">Rs. 500</p>
+                <p>Seller: PakMarket Demo</p>
+            </div>
+
+            <div class="product">
+                <h3>Mobile Cover</h3>
+                <p>Protective mobile phone cover.</p>
+                <p class="price">Rs. 300</p>
+                <p>Seller: PakMarket Demo</p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>PakMarket — Connecting Buyers & Sellers Across Pakistan</p>
+    </footer>
+
+    <script>
+        function searchProducts() {
+            const searchText = document
+                .getElementById("searchBox")
+                .value.toLowerCase();
+
+            const products = document
+                .getElementById("productList")
+                .children;
+
+            for (let product of products) {
+                const productText = product.innerText.toLowerCase();
+
+                if (productText.includes(searchText)) {
+                    product.style.display = "block";
+                } else {
+                    product.style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
