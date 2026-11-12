@@ -161,6 +161,26 @@
             </div>
 
         </div>
+<section class="upload-section">
+    <h2>Seller - Upload Product</h2>
+
+    <input type="text" id="productName"
+    placeholder="Product Name">
+
+    <input type="number" id="productPrice"
+    placeholder="Product Price">
+
+    <textarea id="productDescription"
+    placeholder="Product Description"></textarea>
+
+    <input type="text" id="sellerName"
+    placeholder="Seller Name">
+
+    <input type="file" id="productImage" accept="image/*">
+    <button onclick="uploadProduct()">
+        Upload Product
+    </button>
+</section>    
     </main>
 
     <footer>
@@ -187,6 +207,50 @@
                 }
             }
         }
+
+function uploadProduct() {
+    const name = document.getElementById("productName").value;
+    const price = document.getElementById("productPrice").value;
+    const description = document.getElementById("productDescription").value;
+    const seller = document.getElementById("sellerName").value;
+    const image = document.getElementById("productImage").files[0];
+
+    if (!name || !price || !description || !seller || !image) {
+        alert("Please fill all fields and select a product image.");
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function() {
+        const product = document.createElement("div");
+        product.className = "product";
+
+        const picture = document.createElement("img");
+        picture.src = reader.result;
+        picture.style.width = "100%";
+
+        const title = document.createElement("h3");
+        title.textContent = name;
+
+        const details = document.createElement("p");
+        details.textContent = description;
+
+        const cost = document.createElement("p");
+        cost.textContent = "Rs. " + price;
+
+        const sellerInfo = document.createElement("p");
+        sellerInfo.textContent = "Seller: " + seller;
+
+        product.append(picture, title, details, cost, sellerInfo);
+        document.getElementById("productList").appendChild(product);
+
+        alert("Product uploaded successfully!");
+    };
+
+    reader.readAsDataURL(image);
+}
+    
     </script>
 
 </body>
