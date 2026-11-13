@@ -139,21 +139,21 @@
 
         <div class="products" id="productList">
 
-            <div class="product">
+            <div class="product" onclick="alert(this.innerText)">
                 <h3>USB Cable</h3>
                 <p>Good quality charging cable.</p>
                 <p class="price">Rs. 200</p>
                 <p>Seller: PakMarket Demo</p>
             </div>
 
-            <div class="product">
+            <div class="product" onclick="alert(this.innerText)">
                 <h3>Mobile Charger</h3>
                 <p>Everyday mobile charging adapter.</p>
                 <p class="price">Rs. 500</p>
                 <p>Seller: PakMarket Demo</p>
             </div>
 
-            <div class="product">
+            <div class="product" onclick="alert(this.innerText)">
                 <h3>Mobile Cover</h3>
                 <p>Protective mobile phone cover.</p>
                 <p class="price">Rs. 300</p>
@@ -225,7 +225,9 @@ function uploadProduct() {
     reader.onload = function() {
         const product = document.createElement("div");
         product.className = "product";
-
+product.onclick = function() {
+    alert(product.innerText);
+};
         const picture = document.createElement("img");
         picture.src = reader.result;
         picture.style.width = "100%";
